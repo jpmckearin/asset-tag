@@ -4,6 +4,7 @@ import { UUID } from 'node:crypto'
 import fs from 'fs'
 import SVGtoPDF from 'svg-to-pdfkit'
 import QRCode from 'qrcode-svg'
+import { pdf } from 'pdf-to-img'
 
 class PDFDocumentWithSvg extends PDFDocument {
   addSVG(
@@ -85,14 +86,21 @@ export const printAssetTag = async (assetId: UUID) => {
     printer: printerName,
     type: 'PDF',
     data: pdfData,
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    success: () => {},
     error: (err: Error) => console.error(err),
   })
 }
 
-export const saveAssetTag = async (assetId: UUID) => {
+export const saveExampleAssetTag = async (assetId: UUID) => {
   const pdfData = await createAssetTag(assetId)
 
   fs.writeFileSync('./example/assetLabel.pdf', pdfData)
+}
+
+export const saveExampleAssetTagImage = async (assetId: UUID) => {
+  const pdfData = await createAssetTag(assetId)
+
+  // eslint-disable-next-line no-loops/no-loops
+  for await (const page of await pdf(pdfData, { scale: 3 })) {
+    fs.writeFileSync('./example/assetLabel.png', page)
+  }
 }
