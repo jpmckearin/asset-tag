@@ -1,0 +1,43 @@
+{
+  "name": "asset-tag",
+  "version": "1.0.0",
+  "description": "",
+  "packageManager": "pnpm@8.15.2+sha256.90bb5d6382cb2cb8b8d4959a076b3953d84d1d94121717097bcd41c71344fa14",
+  "scripts": {
+    "start:dev": "npx nodemon",
+    "start": "pnpm run build && node build/index.js",
+    "build": "rimraf ./build && tsc",
+    "lint": "eslint . --ext .ts",
+    "lint-and-fix": "eslint . --ext .ts --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@thiagoelg/node-printer": "^0.6.2",
+    "pdfkit": "^0.14.0",
+    "qrcode-svg": "^1.1.0",
+    "svg-to-pdfkit": "github:alafr/SVG-to-PDFKit#master"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "@types/pdfkit": "^0.13.4",
+    "@types/qrcode-svg": "^1.1.4",
+    "@typescript-eslint/eslint-plugin": "^7.0.1",
+    "@typescript-eslint/parser": "^7.0.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-no-loops": "^0.3.0",
+    "nodemon": "^3.0.3",
+    "prettier": "3.2.5",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
+  }
+}
