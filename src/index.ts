@@ -1,4 +1,4 @@
 import { randomUUID } from 'crypto'
-import { saveAssetLabel } from './printAssetLabel'
+import { saveAssetTag } from './assetTag'
 
-saveAssetLabel(randomUUID())
+saveAssetTag(randomUUID())
