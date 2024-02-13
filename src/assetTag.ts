@@ -27,7 +27,7 @@ const createAssetTag = async (assetId: UUID): Promise<Buffer> => {
     preserveAspectRatio = 'xMidYMid meet'
 
   const doc = new PDFDocumentWithSvg({
-    compress: false,
+    compress: true,
     size: [docWidth, docHeight], // 72 points per inch
     margins: {
       top: margin,
